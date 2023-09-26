@@ -11,4 +11,22 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("LifeCycle", "onCreate()")
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        Log.i("LifeCycle", "onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.i("LifeCycle", "onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.i("LifeCycle", "onPause()")
+    }
 }
