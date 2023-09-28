@@ -1,13 +1,19 @@
 package com.olascoaga.lifecycle
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
 class MainActivity : AppCompatActivity() {
+    private var mediaPlayer: MediaPlayer? = null
+    private var position: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.ai_2)
 
         Log.i("LifeCycle", "onCreate()")
     }
@@ -16,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         Log.i("LifeCycle", "onStart()")
+        mediaPlayer?.start()
     }
 
     override fun onResume() {
@@ -28,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
 
         Log.i("LifeCycle", "onPause()")
+        mediaPlayer?.pause()
     }
 
     override fun onStop() {
