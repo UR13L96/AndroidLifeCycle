@@ -1,9 +1,11 @@
 package com.olascoaga.lifecycle
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
@@ -12,6 +14,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        findViewById<MaterialButton>(R.id.btn_check).setOnClickListener {
+            startActivity(Intent(this, DialogActivity::class.java))
+        }
 
         Log.i("LifeCycle", "onCreate()")
     }
@@ -48,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
+
+        finish()
     }
 
     override fun onRestart() {
